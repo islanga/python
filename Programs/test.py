@@ -16,9 +16,10 @@ cursor = db.cursor()
 cursor.execute("SHOW TABLES")
 
 #	Fetch a single row using fetchone() method.
-data = cursor.fetchone()
+data = cursor.fetchmany()
 
-print ("Database version : %s " % data)
+for n in data:
+	print ("Database version : %s " % n)
 
 #	disconnect from server
 db.close()

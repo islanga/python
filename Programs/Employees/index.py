@@ -3,26 +3,29 @@
 import pymysql
 from sys import argv
 
+name = input("Enter the name you want to store: ")
+
 pymysql.install_as_MySQLdb()
 
 import MySQLdb
 
 # connect
-db = MySQLdb.connect("localhost", "root", "", "cmd")
+db = MySQLdb.connect("localhost", "root", "", "college")
 
 # prepare a cursor object using cursor() method
 cursor = db.cursor()
 
-script, quantity, price = argv
-print(quantity*price)
+query  = "INSERT INTO student(Name) VALUES(%s)"
+args   = (name)
 
-# query = ("SELECT Id, Name FROM Student")
-query = ("INSERT INTO products(quantity,price,total) VALUES("+quantity+","+ price+","+ quantity+price+"")
+cursor.execute(query, args)
 
-cursor.execute(query)
+sql    = "SELECT Name FROM student"
+cursor.execute(sql)
+result = cursor.fetchall()
 
-# for (Id, Name) in cursor:
-#	print(Id, Name)
+for n in result:
+	print(" | ".join(n))
 
 cursor.close()
 db.close()
