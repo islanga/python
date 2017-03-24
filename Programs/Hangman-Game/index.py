@@ -68,10 +68,10 @@ while turns > 0:
  
      # turns counter decreases with 1 (now 9)
         turns -= 1        
- 
+
     # print wrong
         print("Wrong")
- 
+
     # how many turns are left
         print("You have", + turns, 'more guesses')
  
