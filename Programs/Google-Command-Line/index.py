@@ -12,8 +12,6 @@ response 	= urllib.request.urlopen(url + query).read().decode('utf8')
 
 data 		= json.loads(response)
 
-print(data)
-
 results 	= data['responseData']['results']
 
 for result in results:
